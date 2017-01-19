@@ -55,10 +55,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mContext = this;
         mRegistrationButton = (Button) findViewById(R.id.register_button);
+        // in case of permission request is needed, delay configuration until necessary permissions are granted
+        // additionally, check if configuration is already setup, if yes, skip the following process
         if(!needRequestPermission() && !mIsDriversitiSetup){
             Log.i(LOG_TAG, "OnCreate setupDriversitiConfiguration()");
             setupDriversitiConfiguration();
         }
+
         if(mIsDriversitiSetup){
             mDriversitiSDK = Driversiti.getSDK();
             mListener = getDriversitiEventListener();
@@ -271,6 +274,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setupRegistrationButton(){
+        // must register a user in order to allow sdk to initiate
         mUserManager = mDriversitiSDK.getUserManager();
         mRegistrationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -353,7 +357,7 @@ public class MainActivity extends AppCompatActivity {
                 != PackageManager.PERMISSION_GRANTED){
             listPermissionNeeded.add(Manifest.permission.ACCESS_COARSE_LOCATION);
         }
-        
+
         if(!listPermissionNeeded.isEmpty()) {
             ActivityCompat.requestPermissions(mContext,
                     listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]), REQUEST_ID);
@@ -373,6 +377,8 @@ public class MainActivity extends AppCompatActivity {
 
                     // permission was granted, yay! Do the
                     // contacts-related task you need to do.
+
+                    // configuration is setup here once permissions are granted
                     if(!mIsDriversitiSetup){
                         setupDriversitiConfiguration();
                         mDriversitiSDK = Driversiti.getSDK();
