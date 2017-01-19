@@ -353,19 +353,7 @@ public class MainActivity extends AppCompatActivity {
                 != PackageManager.PERMISSION_GRANTED){
             listPermissionNeeded.add(Manifest.permission.ACCESS_COARSE_LOCATION);
         }
-
-//        if (ContextCompat.checkSelfPermission(mContext,
-//                Manifest.permission.READ_EXTERNAL_STORAGE)
-//                != PackageManager.PERMISSION_GRANTED){
-//            listPermissionNeeded.add(Manifest.permission.READ_EXTERNAL_STORAGE);
-//        }
-//
-//        if (ContextCompat.checkSelfPermission(mContext,
-//                Manifest.permission.WRITE_EXTERNAL_STORAGE)
-//                != PackageManager.PERMISSION_GRANTED){
-//            listPermissionNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-//        }
-
+        
         if(!listPermissionNeeded.isEmpty()) {
             ActivityCompat.requestPermissions(mContext,
                     listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]), REQUEST_ID);
