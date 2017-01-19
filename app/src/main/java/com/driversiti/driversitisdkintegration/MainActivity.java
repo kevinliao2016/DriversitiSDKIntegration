@@ -57,12 +57,12 @@ public class MainActivity extends AppCompatActivity {
         mRegistrationButton = (Button) findViewById(R.id.register_button);
         // in case of permission request is needed, delay configuration until necessary permissions are granted
         // additionally, check if configuration is already setup, if yes, skip the following process
-        if(!needRequestPermission() && !mIsDriversitiSetup){
+        if (!needRequestPermission() && !mIsDriversitiSetup) {
             Log.i(LOG_TAG, "OnCreate setupDriversitiConfiguration()");
             setupDriversitiConfiguration();
         }
 
-        if(mIsDriversitiSetup){
+        if (mIsDriversitiSetup) {
             mDriversitiSDK = Driversiti.getSDK();
             mListener = getDriversitiEventListener();
             setupRegistrationButton();
@@ -71,9 +71,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
-        if(mIsDriversitiSetup){
+        if (mIsDriversitiSetup) {
             Log.i(LOG_TAG, "onResume Adding Listener");
             mDriversitiSDK.addEventListener(mListener);
         }
@@ -83,13 +83,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if(mIsDriversitiSetup){
+        if (mIsDriversitiSetup) {
             Log.i(LOG_TAG, "Removing Listener");
             mDriversitiSDK.removeEventListener(mListener);
         }
     }
 
-    private User getApioUserData(){
+    private User getApioUserData() {
         User user = new UserBuilder()
                 .setFirstName("android")
                 .setLastName("dev")
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         return user;
     }
 
-    private void postToUiThreadHelper(Runnable runnable){
+    private void postToUiThreadHelper(Runnable runnable) {
         mContext.runOnUiThread(runnable);
     }
 
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                 Runnable runnable = new Runnable() {
                     @Override
                     public void run() {
-                        Log.i(LOG_TAG, "Posting "+ event.getEventType().toString());
+                        Log.i(LOG_TAG, "Posting " + event.getEventType().toString());
                         Toast.makeText(mContext, "event: " + event.getEventType().toString(), Toast.LENGTH_LONG).show();
                     }
                 };
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 Runnable runnable = new Runnable() {
                     @Override
                     public void run() {
-                        Log.i(LOG_TAG, "Posting "+ event.getEventType().toString());
+                        Log.i(LOG_TAG, "Posting " + event.getEventType().toString());
                         Toast.makeText(mContext, "event: " + event.getEventType().toString(), Toast.LENGTH_LONG).show();
                     }
                 };
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                 Runnable runnable = new Runnable() {
                     @Override
                     public void run() {
-                        Log.i(LOG_TAG, "Posting "+ event.getEventType().toString());
+                        Log.i(LOG_TAG, "Posting " + event.getEventType().toString());
                         Toast.makeText(mContext, "event: " + event.getEventType().toString(), Toast.LENGTH_LONG).show();
                     }
                 };
@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
                 Runnable runnable = new Runnable() {
                     @Override
                     public void run() {
-                        Log.i(LOG_TAG, "Posting "+ event.getEventType().toString());
+                        Log.i(LOG_TAG, "Posting " + event.getEventType().toString());
                         Toast.makeText(mContext, "event: " + event.getEventType().toString(), Toast.LENGTH_LONG).show();
                     }
                 };
@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
                 Runnable runnable = new Runnable() {
                     @Override
                     public void run() {
-                        Log.i(LOG_TAG, "Posting "+ event.getEventType().toString());
+                        Log.i(LOG_TAG, "Posting " + event.getEventType().toString());
                         Toast.makeText(mContext, "event: " + event.getEventType().toString(), Toast.LENGTH_LONG).show();
                     }
                 };
@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
                 Runnable runnable = new Runnable() {
                     @Override
                     public void run() {
-                        Log.i(LOG_TAG, "Posting "+ event.getEventType().toString());
+                        Log.i(LOG_TAG, "Posting " + event.getEventType().toString());
                         Toast.makeText(mContext, "event: " + event.getEventType().toString(), Toast.LENGTH_LONG).show();
                     }
                 };
@@ -198,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
                 Runnable runnable = new Runnable() {
                     @Override
                     public void run() {
-                        Log.i(LOG_TAG, "Posting "+ event.getEventType().toString());
+                        Log.i(LOG_TAG, "Posting " + event.getEventType().toString());
                         Toast.makeText(mContext, "event: " + event.getEventType().toString(), Toast.LENGTH_LONG).show();
                     }
                 };
@@ -218,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
                 Runnable runnable = new Runnable() {
                     @Override
                     public void run() {
-                        Log.i(LOG_TAG, "Posting "+ speedExceededEvent.getEventType().toString());
+                        Log.i(LOG_TAG, "Posting " + speedExceededEvent.getEventType().toString());
                         Toast.makeText(mContext, "event: " + speedExceededEvent.getEventType().toString(), Toast.LENGTH_LONG).show();
                     }
                 };
@@ -232,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
                 Runnable runnable = new Runnable() {
                     @Override
                     public void run() {
-                        Log.i(LOG_TAG, "Posting "+ speedRestoredEvent.getEventType().toString());
+                        Log.i(LOG_TAG, "Posting " + speedRestoredEvent.getEventType().toString());
                         Toast.makeText(mContext, "event: " + speedRestoredEvent.getEventType().toString(), Toast.LENGTH_LONG).show();
                     }
                 };
@@ -246,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
                 Runnable runnable = new Runnable() {
                     @Override
                     public void run() {
-                        Log.i(LOG_TAG, "Posting "+ event.getEventType().toString());
+                        Log.i(LOG_TAG, "Posting " + event.getEventType().toString());
                         Toast.makeText(mContext, "event: " + event.getEventType().toString(), Toast.LENGTH_LONG).show();
                     }
                 };
@@ -261,7 +261,7 @@ public class MainActivity extends AppCompatActivity {
                 Runnable runnable = new Runnable() {
                     @Override
                     public void run() {
-                        Log.i(LOG_TAG, "Posting "+ event.getEventType().toString());
+                        Log.i(LOG_TAG, "Posting " + event.getEventType().toString());
                         Toast.makeText(mContext, "event: " + event.getEventType().toString(), Toast.LENGTH_LONG).show();
                     }
                 };
@@ -273,14 +273,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void setupRegistrationButton(){
+    public void setupRegistrationButton() {
         // must register a user in order to allow sdk to initiate
         mUserManager = mDriversitiSDK.getUserManager();
         mRegistrationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mUserManager.getActiveUser() != null){
-                    Toast.makeText(mContext,"User already registered", Toast.LENGTH_LONG).show();
+                if (mUserManager.getActiveUser() != null) {
+                    Toast.makeText(mContext, "User already registered", Toast.LENGTH_LONG).show();
                     return;
                 }
                 final User userRegistrationRequest = getApioUserData();
@@ -298,7 +298,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.d(LOG_TAG, "onSuccess() returned a newUser: " + newUser.toString());
                         //Set the unique Id
 
-                        if(mUserManager == null){
+                        if (mUserManager == null) {
                             mUserManager = Driversiti.getSDK().getUserManager();
                         }
                         // Log the user in.
@@ -320,7 +320,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void setupDriversitiConfiguration(){
+    public void setupDriversitiConfiguration() {
         DriversitiConfiguration driversitiConfiguration = new DriversitiConfiguration.ConfigurationBuilder()
                 .setContext(this)
                 .setApplicationId("e52d8f28e3f3051231a74f13af9170373296a4cd")
@@ -344,21 +344,21 @@ public class MainActivity extends AppCompatActivity {
         mIsDriversitiSetup = true;
     }
 
-    public boolean needRequestPermission(){
+    public boolean needRequestPermission() {
         List<String> listPermissionNeeded = new ArrayList<>();
         if (ContextCompat.checkSelfPermission(mContext,
                 Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED){
+                != PackageManager.PERMISSION_GRANTED) {
             listPermissionNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION);
         }
 
         if (ContextCompat.checkSelfPermission(mContext,
                 Manifest.permission.ACCESS_COARSE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED){
+                != PackageManager.PERMISSION_GRANTED) {
             listPermissionNeeded.add(Manifest.permission.ACCESS_COARSE_LOCATION);
         }
 
-        if(!listPermissionNeeded.isEmpty()) {
+        if (!listPermissionNeeded.isEmpty()) {
             ActivityCompat.requestPermissions(mContext,
                     listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]), REQUEST_ID);
             return true;
@@ -379,7 +379,7 @@ public class MainActivity extends AppCompatActivity {
                     // contacts-related task you need to do.
 
                     // configuration is setup here once permissions are granted
-                    if(!mIsDriversitiSetup){
+                    if (!mIsDriversitiSetup) {
                         setupDriversitiConfiguration();
                         mDriversitiSDK = Driversiti.getSDK();
                         mListener = getDriversitiEventListener();
